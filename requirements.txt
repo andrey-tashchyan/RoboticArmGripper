@@ -1,0 +1,8 @@
+opencv-python==4.10.0.84
+numpy==1.26.4
+torch==2.3.1
+ultralytics==8.3.4
+onnxruntime==1.18.1
+# filterpy is optional; include for simple tracking utilities if desired
+filterpy==1.4.5
+

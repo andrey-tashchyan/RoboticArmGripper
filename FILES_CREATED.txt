@@ -1,0 +1,129 @@
+📁 FICHIERS CRÉÉS - YOLOv8 Training avec Images Négatives
+═══════════════════════════════════════════════════════════════════════════════
+
+## 🐍 Scripts Python
+
+1. prepare_dataset_with_negatives.py
+   • Prépare le dataset avec images positives + négatives
+   • Inclut des barres de progression (tqdm)
+   • Vérifie l'intégrité du dataset
+   • Affichage visuel avec émojis
+
+2. train_with_negatives.py
+   • Script d'entraînement avec 2 modes (fast/full)
+   • Arguments CLI : --mode fast ou --mode full
+   • Affichage amélioré avec barres de progression
+   • Métriques finales avec barres visuelles
+   • Support de tqdm pour progression
+
+═══════════════════════════════════════════════════════════════════════════════
+
+## 🔧 Scripts Shell
+
+3. launch_training.sh
+   • Script automatique de lancement
+   • Vérification du dataset
+   • Préparation automatique si nécessaire
+   • Interface colorée avec confirmation
+   • Usage : ./launch_training.sh [fast|full]
+
+═══════════════════════════════════════════════════════════════════════════════
+
+## 📚 Documentation Française
+
+4. QUICK_START.md
+   • Guide ultra-rapide en 3 étapes
+   • Parfait pour démarrer immédiatement
+   • Exemples de commandes
+   • Troubleshooting basique
+
+5. README_TRAINING.md
+   • Documentation complète (8000+ mots)
+   • Guide détaillé de tous les aspects
+   • Paramètres expliqués
+   • Dépannage approfondi
+   • Exemples d'utilisation avancés
+
+6. COMMANDS_CHEATSHEET.md
+   • Aide-mémoire de toutes les commandes
+   • Organisé par catégorie :
+     - Préparation
+     - Entraînement
+     - Monitoring
+     - Validation
+     - Inférence
+     - Export
+     - Debug
+
+7. FEATURES_SUMMARY.md
+   • Résumé des nouvelles fonctionnalités
+   • Comparaison avant/après
+   • Avantages et gains de temps
+   • Exemples d'utilisation
+   • Conseils pour choisir le mode
+
+8. TRAINING_SETUP_SUMMARY.md
+   • Document technique initial (en anglais)
+   • Architecture du système
+   • Explication du mécanisme des négatives
+   • Déjà existant, conservé pour référence
+
+9. FILES_CREATED.txt
+   • Ce fichier - liste de tous les fichiers créés
+
+═══════════════════════════════════════════════════════════════════════════════
+
+## 📂 Configuration
+
+10. data/raspberries.yaml
+    • Configuration YOLO du dataset
+    • Chemins vers images et labels
+    • Single class : raspberry (nc=1)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+## 📊 Structure du Dataset créé
+
+data/raspberries/
+├── images/
+│   ├── train/     (1,168 images : 499 positives + 669 négatives)
+│   ├── val/       (99 images)
+│   └── test/      (51 images)
+└── labels/
+    ├── train/     (499 fichiers .txt - SEULEMENT pour positives)
+    ├── val/       (99 fichiers .txt)
+    └── test/      (51 fichiers .txt)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+## 🎯 USAGE RAPIDE
+
+### Workflow complet
+
+1. Préparer le dataset :
+   python3 prepare_dataset_with_negatives.py
+
+2. Choisir votre mode :
+   
+   # Mode RAPIDE (30 epochs, 1-2h)
+   ./launch_training.sh fast
+   
+   # Mode COMPLET (120 epochs, 5-8h)
+   ./launch_training.sh full
+
+3. Utiliser le modèle :
+   yolo predict model=runs/raspberry_detect/train_fast/weights/best.pt source=image.jpg
+
+═══════════════════════════════════════════════════════════════════════════════
+
+## 📖 Documentation recommandée
+
+Pour démarrer      → Lire QUICK_START.md
+Pour tout savoir   → Lire README_TRAINING.md
+Pour les commandes → Lire COMMANDS_CHEATSHEET.md
+Pour les nouveautés→ Lire FEATURES_SUMMARY.md
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Date de création : 2 novembre 2025
+Pipeline YOLOv8 avec 669 images négatives pour réduction des faux positifs
