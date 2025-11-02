@@ -9,10 +9,11 @@ import shutil
 from pathlib import Path
 from tqdm import tqdm
 
-# Source directories
-RASPBERRY_DIR = Path("/Users/tashchyan/Desktop/BA5/ProdDev/Robotic_Arm/Raspberry")
-BACKGROUND_DIR = Path("/Users/tashchyan/Desktop/BA5/ProdDev/Robotic_Arm/background")
-TARGET_DIR = Path("/Users/tashchyan/Desktop/BA5/ProdDev/Robotic_Arm/data/raspberries")
+# Source directories - Auto-detect (Windows/macOS/Linux compatible)
+SCRIPT_DIR = Path(__file__).parent.resolve()
+RASPBERRY_DIR = SCRIPT_DIR / "Raspberry"
+BACKGROUND_DIR = SCRIPT_DIR / "background"
+TARGET_DIR = SCRIPT_DIR / "data" / "raspberries"
 
 def copy_positive_samples(split='train'):
     """Copy positive raspberry images and their labels."""

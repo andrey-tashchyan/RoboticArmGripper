@@ -1,0 +1,71 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🍓 MÉMO RAPIDE - ENTRAÎNEMENT YOLOV8 RASPBERRY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📌 COMMANDES ESSENTIELLES (macOS)
+
+1️⃣ PRÉPARER (avec barres multicolores 🌈)
+   source .venv311/bin/activate
+   python3 prepare_dataset_colorful.py
+
+2️⃣ ENTRAÎNER MODE RAPIDE (30 epochs, 1-2h)
+   python3 train_with_negatives.py --mode fast
+
+3️⃣ ENTRAÎNER MODE COMPLET (120 epochs, 5-8h)
+   python3 train_with_negatives.py --mode full
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 CE QUE FAIT LE SCRIPT DE PRÉPARATION :
+
+  ✅ Copie 499 images AVEC framboises → avec labels .txt
+  ❌ Copie 669 images SANS framboises → SANS labels .txt
+  
+  → Les 669 backgrounds SANS labels = vrais négatifs
+  → Réduit les faux positifs (mains, visages, objets rouges)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎨 NOUVEAUTÉS DU SCRIPT COLORÉ :
+
+  🟢 Barres VERTES pour images positives
+  🔴 Barres ROUGES pour backgrounds négatifs
+  🔵 Barres BLEUES pour création dossiers
+  🟣 Headers MAGENTA pour sections
+  ⚡ Animations de chargement
+  📊 Statistiques détaillées colorées
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📂 FICHIERS CRÉÉS :
+
+  prepare_dataset_colorful.py     → Préparation ULTRA VISUELLE 🌈
+  train_with_negatives.py         → Entraînement avec 2 modes
+  COMMANDES_ENTRAINEMENT.md       → Guide complet des commandes
+  LANCER_ENTRAINEMENT.txt         → Aide-mémoire simple
+  MEMO_RAPIDE.txt                 → Ce fichier
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 WORKFLOW COMPLET :
+
+  1. source .venv311/bin/activate
+  2. python3 prepare_dataset_colorful.py  ← BARRES MULTICOLORES!
+  3. python3 train_with_negatives.py --mode fast
+  4. Vérifier résultats : open runs/raspberry_detect/train_fast/results.png
+  5. Si OK : python3 train_with_negatives.py --mode full
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 PENDANT L'ENTRAÎNEMENT :
+
+  Vous verrez :
+  - 🔍 Scanning... 499 images, 669 backgrounds, 0 corrupt
+  - 💡 Loaded 669 negative background images with no labels
+  - 🚀 Barres de progression par epoch
+  - 📈 Métriques en temps réel
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ TOUT EST PRÊT ! LANCEZ L'ENTRAÎNEMENT ! 🚀
+

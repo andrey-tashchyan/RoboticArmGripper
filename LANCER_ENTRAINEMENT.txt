@@ -1,0 +1,81 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                                                                               ║
+║   🍓  COMMANDES POUR LANCER L'ENTRAÎNEMENT YOLOV8 RASPBERRY  🍓              ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+
+📋 ÉTAPE 1 : PRÉPARER LE DATASET (1 SEULE FOIS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    source .venv311/bin/activate
+    python3 prepare_dataset_colorful.py
+
+    ✅ Copie 669 images SANS framboises (backgrounds) SANS labels
+    ✅ Affiche des BARRES MULTICOLORES pour chaque étape
+
+
+🚀 ÉTAPE 2 : LANCER L'ENTRAÎNEMENT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ MODE RAPIDE (30 epochs, 1-2 heures) - Pour tester
+
+    source .venv311/bin/activate
+    python3 train_with_negatives.py --mode fast
+
+
+🔥 MODE COMPLET (120 epochs, 5-8 heures) - Pour production
+
+    source .venv311/bin/activate
+    python3 train_with_negatives.py --mode full
+
+
+📜 OU SCRIPT AUTOMATIQUE
+
+    ./launch_training.sh fast     # Mode rapide
+    ./launch_training.sh full     # Mode complet
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💡 COMMANDES COMPLÈTES (copier-coller)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 1. Préparer le dataset avec barres colorées
+source .venv311/bin/activate
+python3 prepare_dataset_colorful.py
+
+# 2. Entraînement rapide (test)
+python3 train_with_negatives.py --mode fast
+
+# 3. Entraînement complet (production)
+python3 train_with_negatives.py --mode full
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 CE QUI EST FAIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ 499 images AVEC framboises (avec labels .txt)
+❌ 669 images SANS framboises (backgrounds, PAS de labels)
+📈 Total : 1,168 images d'entraînement
+
+💡 Les 669 images sans labels = VRAIS NÉGATIFS
+   → Réduit les faux positifs (mains, visages, objets rouges)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 RÉSULTATS ATTENDUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Après entraînement, le modèle sera dans :
+
+    runs/raspberry_detect/train_fast/weights/best.pt    (mode rapide)
+    runs/raspberry_detect/train_full/weights/best.pt    (mode complet)
+
+
+Pour utiliser le modèle :
+
+    yolo predict model=runs/raspberry_detect/train_fast/weights/best.pt source=image.jpg
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

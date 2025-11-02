@@ -1,0 +1,26 @@
+# Requirements pour YOLOv8 Raspberry Detection
+# Compatible: Windows, macOS, Linux
+
+# Core dependencies
+ultralytics>=8.0.0
+torch>=2.0.0
+torchvision>=0.15.0
+tqdm>=4.65.0
+PyYAML>=6.0
+
+# Image processing
+opencv-python>=4.7.0
+pillow>=9.5.0
+
+# Data handling
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Optional but recommended
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# For Windows users with NVIDIA GPU:
+# Uninstall torch first, then install with CUDA support:
+# pip uninstall torch torchvision
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
